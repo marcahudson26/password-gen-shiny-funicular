@@ -16,7 +16,21 @@ function getRandom(arr) {
 }
 
 function generatePassword () {
-  return getRandom(upperCasedCharacters)
+  let password = "";
+
+  // get prompts
+  const passwordLength = Number(prompt("How many characters? (At least 10 characters but no more than 64)", 10))
+
+  // generate password
+  for (let i = 0; i < passwordLength; i++) {
+    const a = getRandom(upperCasedCharacters);
+    password = password + a
+  }
+
+  // shuffle password to make sure beginning characters are not predictable
+  password = password.split("").sort(() => 0.5 - Math.random()).join("")
+
+  return password
 }
 
 // Write password to the #password input
