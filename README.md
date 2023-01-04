@@ -8,3 +8,4 @@ so the application can run, any selected characters will be in the password and 
 ## link to deployed page
 
 ## screenshot of the working application
+![Screenshot](./assets/screenshot.png)
