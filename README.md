@@ -7,5 +7,7 @@ so the application can run, any selected characters will be in the password and 
 
 ## link to deployed page
 
+https://marcahudson26.github.io/password-gen-shiny-funicular/
+
 ## screenshot of the working application
 ![Screenshot](./assets/screenshot.png)
