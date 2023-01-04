@@ -20,11 +20,31 @@ function generatePassword () {
 
   // get prompts
   const passwordLength = Number(prompt("How many characters? (At least 10 characters but no more than 64)", 10))
+  if (isNaN(passwordLength)) {
+    alert("Need to specify a number for character count")
+    return
+  }
+  if (Math.floor(passwordLength) !== passwordLength) {
+    alert("Need to specify an integer for character count")
+    return;
+  }
+  if (passwordLength < 10) {
+    alert("Need to specify a character count greater than or equal to 10")
+    return
+  }
+  if (passwordLength > 64) {
+    alert("Need to specify a character count fewer than or equal to 64")
+    return
+  }
 
   const hasLowercase = confirm("use lowercase characters")
   const hasUppercase = confirm("use uppercase characters")
   const hasNumeric = confirm("use numerical characters")
   const hasSpecial = confirm("use a special characters")
+  if (!hasLowercase && !hasUppercase && !hasNumeric && !hasSpecial) {
+    alert("Need to specify at least one character set")
+    return
+  }
 
   // make sure at least one types exist in string
   if (hasSpecial) {
@@ -68,9 +88,12 @@ function generatePassword () {
 
 // Write password to the #password input
 function writePassword() {
-  let password = generatePassword();
-  let passwordText = document.querySelector('#password');
+  let password = generatePassword()
+  if (!password) {
+    return
+  }
 
+  let passwordText = document.querySelector('#password');
   passwordText.value = password;
 }
 
