@@ -20,13 +20,41 @@ function generatePassword () {
 
   // get prompts
   const passwordLength = Number(prompt("How many characters? (At least 10 characters but no more than 64)", 10))
+
   const hasLowercase = confirm("use lowercase characters")
+  const hasUppercase = confirm("use uppercase characters")
+  const hasNumeric = confirm("use numerical characters")
+  const hasSpecial = confirm("use a special characters")
+
+  // make sure at least one types exist in string
+  if (hasSpecial) {
+    password = password + getRandom(specialCharacters)
+  }
+  if (hasNumeric) {
+    password = password + getRandom(numericCharacters)
+  }
+  if (hasLowercase) {
+    password = password + getRandom(lowerCasedCharacters)
+  }
+  if (hasUppercase) {
+    password = password + getRandom(upperCasedCharacters)
+  }
 
   // generate password
-  for (let i = 0; i < passwordLength; i++) {
-    let allowedCharacters = upperCasedCharacters;
+  for (let i = 0; i < passwordLength - password.length; i++) {
+    //for (let i = 0; i < passwordLength; i++) {
+    let allowedCharacters = [];
+    if (hasSpecial) {
+      allowedCharacters = allowedCharacters.concat(specialCharacters)
+    }
+    if (hasNumeric) {
+      allowedCharacters = allowedCharacters.concat(numericCharacters)
+    }
     if (hasLowercase) {
       allowedCharacters = allowedCharacters.concat(lowerCasedCharacters)
+    }
+    if (hasUppercase) {
+      allowedCharacters = allowedCharacters.concat(upperCasedCharacters)
     }
     const a = getRandom(allowedCharacters);
     password = password + a
