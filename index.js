@@ -59,10 +59,10 @@ function generatePassword () {
   if (hasUppercase) {
     password = password + getRandom(upperCasedCharacters)
   }
+  const howManyCharactersSoFar = password.length
 
   // generate password
-  for (let i = 0; i < passwordLength - password.length; i++) {
-    //for (let i = 0; i < passwordLength; i++) {
+  for (let i = 0; i < passwordLength - howManyCharactersSoFar; i++) {
     let allowedCharacters = [];
     if (hasSpecial) {
       allowedCharacters = allowedCharacters.concat(specialCharacters)
